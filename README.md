@@ -139,4 +139,4 @@ je sais donc qu'il faudra rentrer "mr_game_and_watch" dans "player_infos.typ")
 
 <img width="352" height="635" alt="Capture d’écran 2026-08-13 à 18 00 54" src="https://github.com/user-attachments/assets/1d788e32-974a-4b66-acc0-9005708ddca5" />
 
-Vous n'avez plus qu'à découper les cartes et à les distribuer a vos joueurs !
+Vous n'avez plus qu'à découper les cartes et à les distribuer à vos joueurs !
