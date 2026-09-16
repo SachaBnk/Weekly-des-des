@@ -50,7 +50,7 @@
     cell_content.push[]
   }
 
-  // saut de ligne a la fin 
+  // logo a la fin 
   cell_content.push[#align(center)[#block(
     inset: 8pt,
     logo
@@ -64,8 +64,15 @@
     rows:(1fr), 
     columns: (1fr),
     ..cell_content))
-}
 
+}
+// #text(10em, str(cell_list.len()))
+#for (i) in range(calc.rem-euclid(10 - calc.rem-euclid(cell_list.len(), 10), 10)){
+  cell_list.push(block(fill: white, width:100%, height:100%))
+
+
+
+}
 
 
 #grid(
