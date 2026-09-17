@@ -41,7 +41,7 @@
       else{
         icon = image("assets/character_icons/placeholder.png", height:100%)
       }
-      cell_content.push(align(center)[#table(rows:1, columns: 2, stroke: none,
+      cell_content.push(align(center)[#table(rows:1, columns: 2, stroke: none, inset: 3pt,
         image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%),
         icon
       )])
@@ -51,8 +51,12 @@
     for (i) in range(6-attendee.characters.len()){
       cell_content.push[]
     } 
+  cell_content.push[#align(center)[#block(
+    inset: 8pt,
+    logo
+    )]]
 
-  }else {
+  } else { if (attendee.characters.len() <= 12){
     // si on veut afficher 12 personnages
 
     for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
@@ -73,8 +77,8 @@
         icon2 = image("assets/character_icons/placeholder.png", height:100%)
       }
       // on ajoute le tableau avec les icones de dé et les icones de perso
-      cell_content.push(align(center)[#table(columns: 5, stroke: none)[#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][
-        #icon1][   ][#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][#icon2]
+      cell_content.push(align(center)[#table(columns: 5, stroke: none, inset:3pt)[#image("assets/d12/"+str(2*i+1)+".png", height: 120%)][
+        #icon1][   ][#image("assets/d12/"+str(2*i+2)+".png", height: 130%)][#icon2]
       ])
     }
 
@@ -82,14 +86,49 @@
     for (i) in range(6-calc.div-euclid(attendee.characters.len(), 2)){
       cell_content.push[]
     }
-    
-  
-  // logo a la fin 
-  }
-  cell_content.push[#align(center)[#block(
+    cell_content.push[#align(center)[#block(
     inset: 8pt,
     logo
   )]]
+
+  } else {
+    // si on veut afficher 20 personnages
+
+    for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
+      // perso colonne gauche
+      let icon1 = ""
+      if attendee.characters.at(2*i) in characters_index{
+        icon1 = image("assets/character_icons/"+attendee.characters.at(2*i)+".png", height:100%)
+      }
+      else{
+        icon1 = image("assets/character_icons/placeholder.png", height:100%)
+      }
+      // perso colonne droite
+      let icon2 = ""
+      if attendee.characters.at(2*i+1) in characters_index{
+        icon2 = image("assets/character_icons/"+attendee.characters.at(2*i+1)+".png", height:100%)
+      }
+      else{
+        icon2 = image("assets/character_icons/placeholder.png", height:100%)
+      }
+      // on ajoute le tableau avec les icones de dé et les icones de perso
+      cell_content.push(align(center)[#table(columns: 5, stroke: none, inset:2pt)[#image("assets/d20/"+str(2*i+1)+".png", height: 120%)][
+        #icon1][   ][#image("assets/d20/"+str(2*i+2)+".png", height: 120%)][#icon2]
+      ])
+    }
+
+    // si il manque des personnages on rajoute les lignes manquantes
+    for (i) in range(6-calc.div-euclid(attendee.characters.len(), 2)){
+      cell_content.push[]
+  }
+  // logo a la fin 
+  cell_content.push[#align(center)[#block(
+    inset: 3pt,
+    logo
+  )]]
+  }
+  }
+  
 
 
 
@@ -99,7 +138,6 @@
     rows:(1fr), 
     columns: (1fr),
     ..cell_content))
-
 }
 // #text(10em, str(cell_list.len()))
 #for (i) in range(calc.rem-euclid(10 - calc.rem-euclid(cell_list.len(), 10), 10)){
