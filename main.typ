@@ -73,8 +73,8 @@
         icon2 = image("assets/character_icons/placeholder.png", height:100%)
       }
       // on ajoute le tableau avec les icones de dé et les icones de perso
-      cell_content.push(align(center)[#table(columns: 4, stroke: none)[#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][
-        #icon1][#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][#icon2]
+      cell_content.push(align(center)[#table(columns: 5, stroke: none)[#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][
+        #icon1][   ][#image("assets/dice/d"+str(calc.min(i+1, 6))+".png", height: 100%)][#icon2]
       ])
     }
 
