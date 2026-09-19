@@ -165,7 +165,7 @@
       cell_content.push[]
     }
     cell_content.push[#align(horizon+center)[#block(
-    inset: 8pt,
+    inset: 7pt,
     logo
   )]]
 
