@@ -18,22 +18,18 @@
 
   let cell_content = ()
 
-  // saut de ligne au début
-  cell_content.push[]
-
-  // nom du joueur
-  cell_content.push(align(center)[
-      #block(
-        width:70%,
-        text(font: "Impact", font_color, 2em)[#shrink-to-width(attendee.name)]
-      )
-  ])
 
   
   // personnages
   
   if (attendee.characters.len() <= 2) {
   // 2 personnages
+
+  cell_content.push[#align(center)[#block(
+    inset: 20pt,
+    logo
+    )]]
+
   for (i) in range(attendee.characters.len()){
       let icon = ""
       if attendee.characters.at(i) in characters_index{
@@ -52,15 +48,18 @@
     for (i) in range(2-attendee.characters.len()){
       cell_content.push[]
     } 
-  cell_content.push[#align(center)[#block(
-    inset: 20pt,
-    logo
-    )]]
+  
 
 
 
   } else {if (attendee.characters.len() <= 4){
   // 4 personnages
+  
+  cell_content.push[#align(center)[#block(
+    inset: 11pt,
+    logo
+    )]]
+
   for (i) in range(attendee.characters.len()){
       let icon = ""
       if attendee.characters.at(i) in characters_index{
@@ -79,14 +78,18 @@
     for (i) in range(4-attendee.characters.len()){
       cell_content.push[]
     } 
-  cell_content.push[#align(center)[#block(
-    inset: 11pt,
-    logo
-    )]]
+  
 
 
   } else {if (attendee.characters.len() <= 6){
     // 6 personnages
+
+    cell_content.push[#align(horizon+center)[#block(
+    inset: 8pt,
+    logo
+    )]]
+
+
     for (i) in range(attendee.characters.len()){
       let icon = ""
       if attendee.characters.at(i) in characters_index{
@@ -105,13 +108,15 @@
     for (i) in range(6-attendee.characters.len()){
       cell_content.push[]
     } 
-  cell_content.push[#align(horizon+center)[#block(
-    inset: 8pt,
-    logo
-    )]]
+  
 
   } else {if (attendee.characters.len()<=8) {
     // si on veut afficher 8 personnages
+
+    cell_content.push[#align(horizon+center)[#block(
+    inset: 12pt,
+    logo
+    )]]
 
     for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
       // perso colonne gauche
@@ -144,15 +149,17 @@
       ])
     }
 
-    cell_content.push[#align(horizon+center)[#block(
-    inset: 12pt,
-    logo
-    )]]
+    
 
 
 
   } else {if (attendee.characters.len()<=10){
     // si on veut afficher 10 personnages
+
+    cell_content.push[#align(horizon+center)[#block(
+    inset: 10pt,
+    logo
+    )]]
 
     for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
       // perso colonne gauche
@@ -186,14 +193,16 @@
       ])
     }
 
-    cell_content.push[#align(horizon+center)[#block(
-    inset: 10pt,
-    logo
-    )]]
+    
 
 
   } else { if (attendee.characters.len() > 6 and attendee.characters.len() <= 12){
     // si on veut afficher 12 personnages
+
+    cell_content.push[#align(horizon+center)[#block(
+    inset: 7pt,
+    logo
+  )]]
 
     for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
       // perso colonne gauche
@@ -227,13 +236,17 @@
     }
 
     
-    cell_content.push[#align(horizon+center)[#block(
-    inset: 7pt,
-    logo
-  )]]
+    
 
   } else {
     // si on veut afficher 20 personnages
+
+    // logo a la fin 
+  cell_content.push[#align(horizon+center)[#block(
+    inset: 3pt,
+    logo
+  )]]
+
 
     for (i) in range(calc.div-euclid(attendee.characters.len(), 2)){
       // perso colonne gauche
@@ -272,18 +285,27 @@
     }
 
 
-  // logo a la fin 
-  cell_content.push[#align(horizon+center)[#block(
-    inset: 3pt,
-    logo
-  )]]
-  }
-  }
-  }
-  }
-  }
-  }
   
+  }
+  }
+  }
+  }
+  }
+  }
+
+  // nom du joueur
+  cell_content.push(align(center)[
+      #block(
+        width:70%,
+        text(font: "Impact", font_color, 2em)[#shrink-to-width(attendee.name)]
+      )
+  ])
+
+  // saut de ligne au début
+  cell_content.push[]
+
+
+  cell_content = cell_content.rev()  
 
   cell_list.push(table(
     stroke:none, 
