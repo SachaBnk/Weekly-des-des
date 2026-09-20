@@ -20,7 +20,17 @@
 
 
   
-  // personnages
+
+
+
+
+
+
+
+
+
+
+  // ============== personnages ====================
   
   if (attendee.characters.len() <= 2) {
   // 2 personnages
@@ -293,6 +303,16 @@
   }
   }
 
+// ============== fin personnages ==================
+// 
+// 
+// 
+
+
+
+
+
+
   // nom du joueur
   cell_content.push(align(center)[
       #block(
@@ -304,7 +324,7 @@
   // saut de ligne au début
   cell_content.push[]
 
-
+  // pour avoir les plus hautes valeurs de dé en haut de la carte :
   cell_content = cell_content.rev()  
 
   cell_list.push(table(
@@ -314,7 +334,7 @@
     columns: (1fr),
     ..cell_content))
 }
-// #text(10em, str(cell_list.len()))
+
 #for (i) in range(calc.rem-euclid(10 - calc.rem-euclid(cell_list.len(), 10), 10)){
   cell_list.push(block(fill: white, width:100%, height:100%))
 
